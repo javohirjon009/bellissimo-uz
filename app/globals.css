@@ -2,7 +2,7 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+   --font-inter: 'Inter', sans-serif;
 }
 
 @theme inline {
@@ -14,13 +14,39 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: white;
   }
 }
 
 body {
   background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+ font-family: var(--font-inter);
+ font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+}
+.color {
+  color: #047857;
+}
+
+.gray {
+  color: #828282;
+}
+
+/* Swiper pagination uslublari */
+.swiper-pagination {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  z-index: 10;
+}
+
+.swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  transform: scale(1.2);
 }
