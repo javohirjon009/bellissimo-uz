@@ -174,7 +174,7 @@ export default function ProductModal({ product, isOpen, onClose, onAddToCart }: 
             <button 
                 onClick={handleAddToCart}
                 className="w-full bg-green-600 text-white font-bold py-4 rounded-full hover:bg-green-700 transition-colors shadow-lg shadow-green-500/20 active:scale-[0.98]">
-                Savatga qo'shish
+                Savatga qo&apos;shish
             </button>
         </div>
       </div>

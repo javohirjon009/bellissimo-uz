@@ -65,7 +65,7 @@ const Header = ({
             </div>
             <div className="flex items-center gap-6">
               <a className="text-sm gray" href="#">Biz Haqimizda</a>
-              <a className="text-sm gray" href="#">Bo'sh ish o'rinlari</a>
+              <a className="text-sm gray" href="#">Bo&apos;sh ish o&apos;rinlari</a>
             </div>
           </div>
           <DropdownMenu>
@@ -248,7 +248,7 @@ const Header = ({
                 </DropdownMenu>
                 <div className="border-t border-gray-200 mt-2 pt-2">
                     <a className="block text-sm gray py-2 hover:text-[#047857]" href="#">Biz Haqimizda</a>
-                    <a className="block text-sm gray py-2 hover:text-[#047857]" href="#">Bo'sh ish o'rinlari</a>
+                    <a className="block text-sm gray py-2 hover:text-[#047857]" href="#">Bo&apos;sh ish o&apos;rinlari</a>
                 </div>
              </div>
           </div>

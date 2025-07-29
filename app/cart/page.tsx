@@ -31,7 +31,7 @@ const formatPrice = (price: number) => price.toLocaleString("uz-UZ") + " so'm"
 
 const EmptyCart = ({ onGoToHome }: { onGoToHome: () => void }) => (
   <div style={{ textAlign: "center", padding: "80px 20px", backgroundColor: "#fff", borderRadius: "16px" }}>
-    <h2 style={{ fontSize: "24px", color: "#666", marginBottom: "20px" }}>Savatcha bo'sh</h2>
+    <h2 style={{ fontSize: "24px", color: "#666", marginBottom: "20px" }}>Savatcha bo&apos;sh</h2>
     <button onClick={onGoToHome} style={{ backgroundColor: "#e02c36", color: "white", border: "none", borderRadius: "25px", padding: "15px 30px", fontSize: "16px", fontWeight: 600, cursor: "pointer" }}>
       Buyurtma berish
     </button>
@@ -40,17 +40,17 @@ const EmptyCart = ({ onGoToHome }: { onGoToHome: () => void }) => (
 
 const CartItemView = ({ item, onUpdate, onRemove, isMobile }: { item: CartItem, onUpdate: (id: string, q: number) => void, onRemove: (id: string) => void, isMobile: boolean }) => {
   const baseStyle = {
-    container: { backgroundColor: "white", borderRadius: "15px", padding: "20px", marginBottom: "20px", display: "flex", alignItems: "center", gap: "20px", boxShadow: "0 4px 12px rgba(0,0,0,0.08)" },
-    image: { width: "80px", height: "80px", borderRadius: "50%", objectFit: "cover" },
+       container: { backgroundColor: "white", borderRadius: "15px", padding: "20px", marginBottom: "20px", display: "flex", alignItems: "center", gap: "20px", boxShadow: "0 4px 12px rgba(0,0,0,0.08)" },
+    image: { width: "80px", height: "80px", borderRadius: "50%", objectFit: "cover" as const },
     details: { flex: 1, minWidth: "150px" },
     controls: { display: "flex", alignItems: "center", gap: "15px" }
   }
 
   const mobileStyle = {
-    container: { flexDirection: 'column' as 'column', alignItems: 'stretch' },
-    image: { alignSelf: 'center' },
-    details: { textAlign: 'center' as 'center', marginTop: '10px' },
-    controls: { justifyContent: 'space-between', marginTop: '15px' }
+    container: { flexDirection: 'column' as const, alignItems: 'stretch' },
+  image: { alignSelf: 'center' },
+  details: { textAlign: 'center' as const, marginTop: '10px' },
+  controls: { justifyContent: 'space-between', marginTop: '15px' }
   }
 
   return (
@@ -91,7 +91,7 @@ const OrderSummary = ({ totalPrice, cartItemCount, promoCode, onPromoCodeChange,
       <div style={{ fontSize: "16px", fontWeight: 500, marginBottom: "10px" }}>Promokodni kiritish</div>
       <div style={{ display: "flex", gap: "10px" }}>
         <input type="text" value={promoCode} onChange={(e) => onPromoCodeChange(e.target.value)} style={{ flex: 1, padding: "10px", border: "1px solid #ddd", borderRadius: "8px", fontSize: "14px" }} placeholder="Promokod"/>
-        <button style={{ backgroundColor: "#f8f9fa", border: "1px solid #ddd", borderRadius: "8px", padding: "10px 20px", cursor: "pointer", fontSize: "14px" }}>Qo'llash</button>
+        <button style={{ backgroundColor: "#f8f9fa", border: "1px solid #ddd", borderRadius: "8px", padding: "10px 20px", cursor: "pointer", fontSize: "14px" }}>Qo&apos;llash</button>
       </div>
     </div>
     <div style={{ borderTop: "1px solid #e9ecef", paddingTop: "20px" }}>
@@ -190,7 +190,7 @@ export default function CartPage() {
                 ))}
 
                 <div style={{ marginTop: "40px" }}>
-                  <h3 style={{ fontSize: "20px", fontWeight: 600, marginBottom: "20px" }}>Qo'shishni maslahat beramiz</h3>
+                  <h3 style={{ fontSize: "20px", fontWeight: 600, marginBottom: "20px" }}>Qo&apos;shishni maslahat beramiz</h3>
                   <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "15px" }}>
                     {/* XATO MANA SHU YERDA BO'LISHI MUMKIN EDI */}
                     {/* YECHIM: Key'ni index bilan birga unikal qilish */}

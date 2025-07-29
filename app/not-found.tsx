@@ -55,7 +55,7 @@ export default function NotFound() {
             marginBottom: "10px",
           }}
         >
-          Aftidan, siz mavjud bo'lmagan sahifaga kirdingiz :)
+          Aftidan, siz mavjud bo&apos;lmagan sahifaga kirdingiz :)
         </p>
         <p
           style={{

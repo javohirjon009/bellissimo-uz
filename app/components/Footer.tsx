@@ -33,7 +33,7 @@ export default function Footer() {
             fontWeight: "500",
             color: "#FFFFFF80"
           }}>
-            RAQAMGA QO'NG'IROQ QILING - 1174
+            RAQAMGA QO&apos;NG&apos;IROQ QILING - 1174
           </div>
         </div>
 
@@ -68,7 +68,7 @@ export default function Footer() {
               flexDirection: "column",
               gap: "12px"
             }}>
-              <li><a href="#" style={linkStyle}>Bizning ish o'rinlarimiz</a></li>
+              <li><a href="#" style={linkStyle}>Bizning ish o&apos;rinlarimiz</a></li>
               <li><a href="#" style={linkStyle}>Franshiza</a></li>
             </ul>
           </div>

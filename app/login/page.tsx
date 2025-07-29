@@ -218,7 +218,7 @@ export default function LoginPage() {
             <>
               <div style={{ marginBottom: "20px" }}>
                 <p style={{ color: "#666", marginBottom: "10px", lineHeight: "1.5" }}>
-                  Kabinetga kirish uchun biz kodni ko'rsatilgan telefon raqamga SMS yuboramiz:
+                  Kabinetga kirish uchun biz kodni ko&apos;rsatilgan telefon raqamga SMS yuboramiz:
                 </p>
                 <div
                   style={{
@@ -241,7 +241,7 @@ export default function LoginPage() {
                       fontSize: "14px",
                     }}
                   >
-                    O'zgartirish
+                    O&apos;zgartirish
                   </button>
                 </div>
               </div>
