@@ -30,7 +30,6 @@ export default function Loading() {
         padding: "20px",
       }}
     >
-      {/* Background Pattern */}
       <div
         style={{
           position: "absolute",
@@ -47,7 +46,6 @@ export default function Loading() {
         }}
       />
 
-      {/* Main Loading Content */}
       <div
         style={{
           position: "relative",
@@ -57,7 +55,6 @@ export default function Loading() {
           width: "100%",
         }}
       >
-        {/* Animated Pizza Logo */}
         <div
           style={{
             position: "relative",
@@ -71,7 +68,6 @@ export default function Loading() {
             </div>
         </div>
 
-        {/* Brand Name */}
         <div style={{ marginBottom: "30px" }}>
           <h1
             style={{
@@ -95,7 +91,6 @@ export default function Loading() {
           </p>
         </div>
 
-        {/* Loading Text */}
         <div
           style={{
             fontSize: "20px",
@@ -107,7 +102,6 @@ export default function Loading() {
           Yuklanmoqda{dots}
         </div>
 
-        {/* Loading Bar */}
         <div
           style={{
             width: "100%",
@@ -129,7 +123,6 @@ export default function Loading() {
           />
         </div>
 
-        {/* Loading Message */}
         <p
           style={{
             fontSize: "16px",
@@ -141,7 +134,6 @@ export default function Loading() {
         </p>
       </div>
 
-      {/* Floating Elements */}
       <div
         style={{
           position: "absolute",

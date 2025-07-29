@@ -7,13 +7,11 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper/types";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-// Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
 
-// Rasmlar manbasi
 const slides = [
   {
     id: "slide-1",
@@ -47,10 +45,9 @@ export default function Carousel() {
   const nextRef = useRef<HTMLButtonElement>(null);
 
   return (
-    // Asosiy konteynerga ekran o'lchamiga bog'liq balandlik berildi.
-    // Mobil qurilmalarda karusel yon tomondan yopishib qolmasligi uchun padding qo'shildi.
+   
     <div className="relative max-w-[1200px] mx-auto h-[220px] sm:h-[300px] md:h-[400px] rounded-lg md:rounded-2xl px-4 md:px-5 sm:px-0">
-      {/* Navigation tugmalari moslashtirildi */}
+    
       <button
         ref={prevRef}
         className="absolute cursor-pointer left-2 sm:left-4 top-1/2 z-10 -translate-y-1/2 bg-white/30 hover:bg-white/50 rounded-full p-1 sm:p-2 backdrop-blur-sm transition-all"
@@ -78,9 +75,6 @@ export default function Carousel() {
         }}
         pagination={{
           clickable: true,
-          // Kichik ekranlarda nuqtalar chiroyliroq ko'rinishi uchun stil
-          // global.css faylingizga qo'shishingiz mumkin:
-          // .swiper-pagination-bullet { transform: scale(0.8); }
         }}
         navigation={{
           prevEl: prevRef.current,

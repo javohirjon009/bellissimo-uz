@@ -11,8 +11,6 @@ import React, {
 } from "react";
 import { Slot } from "@radix-ui/react-slot";
 
-// --- TypeScript Interfeyslar va Tiplar ---
-
 type DropdownContextType = {
   isOpen: boolean;
   toggle: () => void;
@@ -34,7 +32,7 @@ interface DropdownMenuContentProps {
   className?: string;
   /** Ochiladigan menyu qaysi tomondan chiqishi */
   side?: "top" | "bottom" | "left" | "right";
-  /** Ochiladigan menyuning Trigger'ga nisbatan joylashuvi */
+ 
   align?: "start" | "center" | "end";
 }
 
@@ -44,14 +42,8 @@ interface DropdownMenuItemProps {
   className?: string;
 }
 
-// --- Context yaratish ---
-// Barcha komponentlar shu Context orqali "gaplashadi".
 const DropdownContext = createContext<DropdownContextType | null>(null);
 
-/**
- * Dropdown kontekstidan foydalanish uchun maxsus hook.
- * Bu kodni qisqa va xatolardan himoyalangan qiladi.
- */
 const useDropdown = () => {
   const context = useContext(DropdownContext);
   if (!context) {
@@ -62,11 +54,6 @@ const useDropdown = () => {
   return context;
 };
 
-// --- Asosiy Komponent: DropdownMenu ---
-/**
- * Barcha dropdown elementlari uchun ota-konteyner.
- * Holatni (ochiq/yopiq) boshqaradi va Context'ni ta'minlaydi.
- */
 const DropdownMenu = ({ children }: DropdownMenuProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -74,7 +61,6 @@ const DropdownMenu = ({ children }: DropdownMenuProps) => {
   const toggle = () => setIsOpen((prev) => !prev);
   const close = () => setIsOpen(false);
 
-  // Komponentdan tashqarida bosilganda menyuni yopish
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -97,10 +83,6 @@ const DropdownMenu = ({ children }: DropdownMenuProps) => {
   );
 };
 
-// --- DropdownMenuTrigger ---
-/**
- * Ochiladigan menyuni ochish/yopish uchun interaktiv element (odatda tugma).
- */
 const DropdownMenuTrigger = React.forwardRef<
   HTMLButtonElement,
   DropdownMenuTriggerProps & HTMLAttributes<HTMLButtonElement>
@@ -116,10 +98,6 @@ const DropdownMenuTrigger = React.forwardRef<
 });
 DropdownMenuTrigger.displayName = "DropdownMenuTrigger";
 
-// --- DropdownMenuContent ---
-/**
- * Menyuning ochilganda paydo bo'ladigan qismi.
- */
 const DropdownMenuContent = ({
   children,
   className = "",
@@ -160,7 +138,6 @@ const DropdownMenuContent = ({
     },
   };
   
-  // align uchun to'g'ri klassni tanlash
   const alignClass = align === 'end' ? positionClasses.align.end[side] :
                      align === 'center' ? positionClasses.align.center[side] :
                      positionClasses.align.start[side];

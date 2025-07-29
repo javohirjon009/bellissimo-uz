@@ -24,7 +24,6 @@ export default function NotFound() {
       }}
     >
       
-      {/* 404 with Pizza */}
       <div
         style={{
           display: "flex",
@@ -41,7 +40,6 @@ export default function NotFound() {
         
       </div>
 
-      {/* Error Messages */}
       <div
         style={{
           textAlign: "center",
@@ -66,7 +64,6 @@ export default function NotFound() {
         </p>
       </div>
 
-      {/* Back to Home Button */}
       <button
         onClick={handleGoHome}
         style={{
@@ -79,7 +76,6 @@ export default function NotFound() {
           fontWeight: "500",
           cursor: "pointer",
           transition: "all 0.3s ease",
-        //   boxShadow: "0 4px 15px rgba(44, 62, 80, 0.2)",
         }}
         onMouseEnter={(e) => {
           e.currentTarget.style.backgroundColor = "#2f3031ff"

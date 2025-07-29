@@ -55,8 +55,7 @@ const Header = ({
   return (
     <header className="relative bg-white z-50 w-full border-b border-gray-100">
       <div className="max-w-[1200px] m-auto">
-        {/* Top Bar - FAQAT Katta ekranlar uchun */}
-        {/* O'ZGARTIRILDI: md:flex -> lg:flex */}
+      
         <div className="hidden lg:flex flex-wrap items-center justify-between gap-2 container mx-auto px-4 py-3">
           <div className="flex flex-wrap items-center gap-10">
             <div className="flex items-center gap-2">
@@ -81,7 +80,7 @@ const Header = ({
                 <GoChevronDown />
               </div>
             </DropdownMenuTrigger>
-            {/* QO'SHILDI: align="end" menyuni o'ng tomonga to'g'rilaydi */}
+           
             <DropdownMenuContent align="end">
               {languages.map((lang) => (
                 <DropdownMenuItem key={lang.code} onClick={() => setSelectedLanguage(lang.code)}>
@@ -95,8 +94,6 @@ const Header = ({
           </DropdownMenu>
         </div>
 
-        {/* Chiziq - FAQAT Katta ekranlar uchun */}
-        {/* O'ZGARTIRILDI: md:block -> lg:block */}
         <div className="w-full h-[1px] bg-gray-200 hidden lg:block"></div>
 
         {/* Main Header */}
@@ -111,8 +108,6 @@ const Header = ({
               onClick={() => router.push("/")}
             />
 
-            {/* Katta ekranlar uchun shahar va yetkazib berish (FAQAT lg dan boshlab) */}
-            {/* O'ZGARTIRILDI: md:flex -> lg:flex */}
             {!isCartPage && !isLoginPage && (
               <>
                 <div className="hidden lg:flex">
@@ -153,8 +148,7 @@ const Header = ({
           </div>
 
           <div className="flex items-center gap-2 sm:gap-5">
-            {/* Halol va Bellkoin - FAQAT Katta ekranlar uchun */}
-            {/* O'ZGARTIRILDI: md:flex -> lg:flex */}
+          
             {!isCartPage && !isLoginPage && (
               <div className="hidden lg:flex items-center gap-5">
                 <a href="#"><Image src="/images/halal.webp" alt="halal" width={40} height={40} /></a>
@@ -198,7 +192,6 @@ const Header = ({
                       <ChevronDown className="w-5 h-5 text-gray-500" />
                     </div>
                   </DropdownMenuTrigger>
-                  {/* O'ZGARTIRILDI: Kenglikni avtomatik moslashtirish uchun className olib tashlandi */}
                   <DropdownMenuContent>
                     {cities.map((city) => (
                       <DropdownMenuItem key={city} onClick={() => {setSelectedCity(city); toggleMobileMenu();}}>
@@ -234,7 +227,7 @@ const Header = ({
                         <GoChevronDown className="w-5 h-5 text-gray-500" />
                       </div>
                     </DropdownMenuTrigger>
-                    {/* O'ZGARTIRILDI: Kenglikni avtomatik moslashtirish uchun className olib tashlandi */}
+                    
                     <DropdownMenuContent>
                       {languages.map((lang) => (
                         <DropdownMenuItem key={lang.code} onClick={() => {setSelectedLanguage(lang.code); toggleMobileMenu();}}>

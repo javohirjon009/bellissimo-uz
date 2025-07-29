@@ -6,11 +6,10 @@ import type { CartItem, Product } from "../types"
 import { products } from "../data/products"
 import Header from "../components/Header"
 
-// --- MUSTAQIL HOOK VA YORDAMCHI FUNKSIYALAR (KOMPONENTDAN TASHQARIDA) ---
+// --- YORDAMCHI ELEMENTLAR VA HOOK'LAR ---
 
 const LOCAL_STORAGE_KEY = "bellissimo-cart"
 
-// Ekran o'lchamini kuzatish uchun maxsus hook
 const useWindowSize = () => {
   const [size, setSize] = useState({ width: 0, height: 0 })
   useEffect(() => {
@@ -23,11 +22,9 @@ const useWindowSize = () => {
   return size
 }
 
-// Narxni formatlash
 const formatPrice = (price: number) => price.toLocaleString("uz-UZ") + " so'm"
 
-
-// --- MUSTAQIL YORDAMCHI KOMPONENTLAR (MUHIM: ASOSIY KOMPONENTDAN TASHQARIDA!) ---
+// --- KICHIK KOMPONENTLAR ---
 
 const EmptyCart = ({ onGoToHome }: { onGoToHome: () => void }) => (
   <div style={{ textAlign: "center", padding: "80px 20px", backgroundColor: "#fff", borderRadius: "16px" }}>
@@ -40,24 +37,26 @@ const EmptyCart = ({ onGoToHome }: { onGoToHome: () => void }) => (
 
 const CartItemView = ({ item, onUpdate, onRemove, isMobile }: { item: CartItem, onUpdate: (id: string, q: number) => void, onRemove: (id: string) => void, isMobile: boolean }) => {
   const baseStyle = {
-       container: { backgroundColor: "white", borderRadius: "15px", padding: "20px", marginBottom: "20px", display: "flex", alignItems: "center", gap: "20px", boxShadow: "0 4px 12px rgba(0,0,0,0.08)" },
+    container: { backgroundColor: "white", borderRadius: "15px", padding: "20px", marginBottom: "20px", display: "flex", alignItems: "center", gap: "20px", boxShadow: "0 4px 12px rgba(0,0,0,0.08)" },
     image: { width: "80px", height: "80px", borderRadius: "50%", objectFit: "cover" as const },
-    details: { flex: 1, minWidth: "150px" },
+    details: { flex: 1, minWidth: "100px" }, // Minimal kenglikni kamaytirdim
     controls: { display: "flex", alignItems: "center", gap: "15px" }
   }
 
   const mobileStyle = {
     container: { flexDirection: 'column' as const, alignItems: 'stretch' },
-  image: { alignSelf: 'center' },
-  details: { textAlign: 'center' as const, marginTop: '10px' },
-  controls: { justifyContent: 'space-between', marginTop: '15px' }
+    image: { alignSelf: 'center' },
+    details: { textAlign: 'center' as const, marginTop: '10px' },
+    // YECHIM: Elementlar sig'maganda qatorga bo'linishi uchun 'wrap' qo'shildi
+    controls: { justifyContent: 'space-between', marginTop: '15px', flexWrap: 'wrap' as const, gap: '10px' }
   }
 
   return (
     <div style={{ ...baseStyle.container, ...(isMobile && mobileStyle.container) }}>
       <img src={item.product.image || "/placeholder.svg"} alt={item.product.name} style={{ ...baseStyle.image, ...(isMobile && mobileStyle.image) }} />
       <div style={{ ...baseStyle.details, ...(isMobile && mobileStyle.details) }}>
-        <h3 style={{ fontSize: "18px", fontWeight: 600, marginBottom: "5px" }}>{item.product.name}</h3>
+        {/* YECHIM: Uzun nomlar sig'ishi uchun wordBreak qo'shildi */}
+        <h3 style={{ fontSize: "18px", fontWeight: 600, marginBottom: "5px", wordBreak: 'break-word' }}>{item.product.name}</h3>
         <div style={{ fontSize: "14px", color: "#666" }}>
           {item.selectedSize && item.product.sizes?.find((s) => s.id === item.selectedSize)?.name}
           {item.selectedCrust && `, ${item.product.crustTypes?.find((c) => c.id === item.selectedCrust)?.name}`}
@@ -69,6 +68,7 @@ const CartItemView = ({ item, onUpdate, onRemove, isMobile }: { item: CartItem, 
           <span style={{ fontSize: "18px", fontWeight: 500, minWidth: "20px", textAlign: "center" }}>{item.quantity}</span>
           <button onClick={() => onUpdate(item.id, item.quantity + 1)} style={{ width: "30px", height: "30px", borderRadius: "50%", border: "none", backgroundColor: "white", cursor: "pointer", fontSize: "20px" }}>+</button>
         </div>
+        {/* YECHIM: Mobil qurilmada minWidth olib tashlandi */}
         <div style={{ fontSize: "18px", fontWeight: "bold", minWidth: isMobile ? "auto" : "100px", textAlign: "right" }}>
           {formatPrice(item.totalPrice * item.quantity)}
         </div>
@@ -80,7 +80,7 @@ const CartItemView = ({ item, onUpdate, onRemove, isMobile }: { item: CartItem, 
 const RecommendedItemView = ({ product, onAdd }: { product: Product, onAdd: (p: Product) => void }) => (
    <div onClick={() => onAdd(product)} style={{ backgroundColor: "white", borderRadius: "15px", padding: "20px", textAlign: "center", boxShadow: "0 2px 10px rgba(0,0,0,0.05)", cursor: "pointer", transition: "transform 0.2s", }}>
       <img src={product.image || "/placeholder.svg"} alt={product.name} style={{ width: "80px", height: "80px", borderRadius: "50%", objectFit: "cover", marginBottom: "10px" }}/>
-      <div style={{ fontSize: "14px", fontWeight: 500, marginBottom: "5px" }}>{product.name}</div>
+      <div style={{ fontSize: "14px", fontWeight: 500, marginBottom: "5px", wordBreak: 'break-word' }}>{product.name}</div>
       <div style={{ fontSize: "14px", fontWeight: "bold" }}>{formatPrice(product.price)}</div>
     </div>
 )
@@ -89,7 +89,8 @@ const OrderSummary = ({ totalPrice, cartItemCount, promoCode, onPromoCodeChange,
   <div style={{ backgroundColor: "white", borderRadius: "15px", padding: "25px", boxShadow: "0 4px 12px rgba(0,0,0,0.08)", position: isMobile ? "static" : "sticky", top: "20px", marginTop: isMobile ? "40px" : "0" }}>
     <div style={{ marginBottom: "25px" }}>
       <div style={{ fontSize: "16px", fontWeight: 500, marginBottom: "10px" }}>Promokodni kiritish</div>
-      <div style={{ display: "flex", gap: "10px" }}>
+      {/* YECHIM: Mobil qurilmada ustun shakliga o'tish */}
+      <div style={{ display: "flex", gap: "10px", flexDirection: isMobile ? 'column' : 'row' }}>
         <input type="text" value={promoCode} onChange={(e) => onPromoCodeChange(e.target.value)} style={{ flex: 1, padding: "10px", border: "1px solid #ddd", borderRadius: "8px", fontSize: "14px" }} placeholder="Promokod"/>
         <button style={{ backgroundColor: "#f8f9fa", border: "1px solid #ddd", borderRadius: "8px", padding: "10px 20px", cursor: "pointer", fontSize: "14px" }}>Qo&apos;llash</button>
       </div>
@@ -192,8 +193,7 @@ export default function CartPage() {
                 <div style={{ marginTop: "40px" }}>
                   <h3 style={{ fontSize: "20px", fontWeight: 600, marginBottom: "20px" }}>Qo&apos;shishni maslahat beramiz</h3>
                   <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "15px" }}>
-                    {/* XATO MANA SHU YERDA BO'LISHI MUMKIN EDI */}
-                    {/* YECHIM: Key'ni index bilan birga unikal qilish */}
+                  
                     {recommendedProducts.map((product, index) => (
                       <RecommendedItemView key={`${product.id}-${index}`} product={product} onAdd={addRecommendedToCart} />
                     ))}

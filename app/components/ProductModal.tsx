@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import type { Product, CartItem } from "../types" // Turlarni to'g'ri import qiling
+import type { Product, CartItem } from "../types" 
 import Image from "next/image"
 import { X, Plus } from "lucide-react"
 
@@ -13,15 +13,14 @@ interface ProductModalProps {
 }
 
 export default function ProductModal({ product, isOpen, onClose, onAddToCart }: ProductModalProps) {
-  // --- STATE MANAGEMENT (Sizning kodingiz) ---
-  const [selectedSize, setSelectedSize] = useState<string>("Kichkina") // Default qiymat berildi
-  const [selectedCrust, setSelectedCrust] = useState<string>("Qalin")  // Default qiymat berildi
+  
+  const [selectedSize, setSelectedSize] = useState<string>("Kichkina") 
+  const [selectedCrust, setSelectedCrust] = useState<string>("Qalin") 
   const [selectedIngredients, setSelectedIngredients] = useState<string[]>([])
-  const [quantity, setQuantity] = useState(1) // Hozircha ishlatilmayapti, lekin kelajak uchun qoldirildi
+  const [quantity, setQuantity] = useState(1) 
 
   useEffect(() => {
     if (product && isOpen) {
-      // Modal ochilganda default qiymatlarni o'rnatish
       setSelectedSize(product.sizes?.[0]?.name || "Kichkina")
       setSelectedCrust(product.crustTypes?.[0]?.name || "Qalin")
       setSelectedIngredients([])
@@ -31,11 +30,7 @@ export default function ProductModal({ product, isOpen, onClose, onAddToCart }: 
 
   if (!isOpen || !product) return null
 
-  // --- LOGIC (Sizning kodingiz) ---
   const calculateTotalPrice = () => {
-    // Narxni hisoblash logikasi (o'zgartirishsiz qoldirildi, kerak bo'lsa moslashtiriladi)
-    // Hozirgi dizaynda har bir size/crust uchun alohida narx yo'q, faqat umumiy narx.
-    // Masalliqlar narxi qo'shiladi.
     let total = product.price
     selectedIngredients.forEach((ingredientId) => {
         const ingredient = product.ingredients!.find((i) => i.id === ingredientId)
@@ -46,7 +41,7 @@ export default function ProductModal({ product, isOpen, onClose, onAddToCart }: 
 
   const handleIngredientToggle = (ingredientId: string) => {
     if (selectedIngredients.length >= 15 && !selectedIngredients.includes(ingredientId)) {
-      return // 15 tadan ortiq masalliq qo'shishni cheklash
+      return 
     }
     setSelectedIngredients((prev) =>
       prev.includes(ingredientId) ? prev.filter((id) => id !== ingredientId) : [...prev, ingredientId],
@@ -71,7 +66,7 @@ export default function ProductModal({ product, isOpen, onClose, onAddToCart }: 
   }
 
   const formatPrice = (price: number) => {
-    return price.toLocaleString("de-DE") + " so'm" // Raqamlarni chiroyli formatlash
+    return price.toLocaleString("de-DE") + " so'm" 
   }
 
   // --- RENDER ---
@@ -84,7 +79,7 @@ export default function ProductModal({ product, isOpen, onClose, onAddToCart }: 
         className="bg-white rounded-2xl w-full max-w-4xl max-h-[95vh] grid grid-cols-1 lg:grid-cols-2 shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* --- Chap Ustun: Rasm va Ma'lumotlar --- */}
+     
         <div className="relative p-6 sm:p-8 flex flex-col items-center text-center lg:text-left lg:items-start order-2 lg:order-1">
           <div className="relative w-full max-w-xs sm:max-w-sm mx-auto mb-4">
              <Image
@@ -94,11 +89,7 @@ export default function ProductModal({ product, isOpen, onClose, onAddToCart }: 
               height={400}
               className="w-full h-auto"
             />
-            {product.badge === "HIT!" && (
-                 <div className="absolute -top-2 -right-2 bg-red-500 text-white font-bold text-sm rounded-full w-16 h-16 flex items-center justify-center rotate-12 shadow-lg">
-                    HIT!
-                 </div>
-            )}
+        
           </div>
           
           <h2 className="text-3xl font-bold text-gray-800">{product.name}</h2>
@@ -112,7 +103,7 @@ export default function ProductModal({ product, isOpen, onClose, onAddToCart }: 
           <p className="mt-auto text-4xl font-extrabold text-gray-900">{formatPrice(calculateTotalPrice())}</p>
         </div>
 
-        {/* --- O'ng Ustun: Sozlamalar --- */}
+      
         <div className="relative p-6 sm:p-8 flex flex-col space-y-6 overflow-y-auto order-1 lg:order-2">
             <button
               onClick={onClose}
@@ -133,7 +124,7 @@ export default function ProductModal({ product, isOpen, onClose, onAddToCart }: 
                 </div>
             </div>
 
-            {/* Xamir Turi */}
+          
             <div className="flex items-center gap-2">
                 {product.crustTypes?.map((crust) => (
                     <button key={crust.id} onClick={() => setSelectedCrust(crust.name)} className={`w-full p-1 rounded-full text-sm font-medium transition-all duration-200 border-2 ${selectedCrust === crust.name ? (crust.name === "Bort qo'shish" ? 'bg-yellow-100 border-yellow-400 text-yellow-800' : 'bg-gray-200 border-gray-400') : 'border-transparent bg-gray-100 text-gray-500 hover:border-gray-300'}`}>
@@ -145,7 +136,7 @@ export default function ProductModal({ product, isOpen, onClose, onAddToCart }: 
                 ))}
             </div>
 
-            {/* Masalliqlar */}
+            
             <div className="flex-grow space-y-3">
                 <div className="flex justify-between items-center">
                     <h3 className="font-bold text-lg text-gray-800">Masalliqlarni tanlang</h3>
@@ -170,7 +161,7 @@ export default function ProductModal({ product, isOpen, onClose, onAddToCart }: 
                 </div>
             </div>
             
-            {/* Savatga Qo'shish */}
+           
             <button 
                 onClick={handleAddToCart}
                 className="w-full bg-green-600 text-white font-bold py-4 rounded-full hover:bg-green-700 transition-colors shadow-lg shadow-green-500/20 active:scale-[0.98]">

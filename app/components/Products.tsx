@@ -9,12 +9,12 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 import { Edit2 } from "lucide-react";
 
-// --- Dinamik Importlar ---
+
 const DynamicProductModal = dynamic(() => import("../components/ProductModal"), {
   ssr: false,
 });
 
-// --- Kichik Komponentlar ---
+
 
 const ProductCard = ({ product, onClick }: { product: Product; onClick: () => void }) => {
   const formatPrice = (price: number) => {
@@ -35,9 +35,7 @@ const ProductCard = ({ product, onClick }: { product: Product; onClick: () => vo
           className="object-cover transition-transform duration-500 group-hover:scale-110"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 300px"
         />
-        {/* {product.badge && (
-          <div className="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">{product.badge}</div>
-        )} */}
+       
       </div>
       <div className="p-4 flex flex-col flex-grow">
         <h3 className="text-lg font-semibold text-gray-800 mb-2 truncate transition-colors">{product.name}</h3>
@@ -125,7 +123,7 @@ export default function BellissimoApp() {
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="bg-white p-4">
-        {/* O'ZGARTIRILDI: max-w-[1200px] */}
+      
         <div className="max-w-[1200px] mx-auto flex flex-col lg:flex-row items-center justify-center gap-4 lg:gap-8">
           <div className="flex bg-gray-100 rounded-full p-1">
             <button
@@ -156,7 +154,7 @@ export default function BellissimoApp() {
       </div>
 
       <div className="sticky top-0 z-40 bg-white/90 backdrop-blur-lg border-b border-gray-200">
-        {/* O'ZGARTIRILDI: max-w-[1200px] */}
+      
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4 py-3">
           <div className="flex gap-2.5 overflow-x-auto flex-1 no-scrollbar">
             {categories.map((category) => (

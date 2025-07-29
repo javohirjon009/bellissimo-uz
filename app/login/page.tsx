@@ -16,7 +16,7 @@ export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
 
-  // Countdown timer for SMS resend
+  
   useEffect(() => {
     let interval: NodeJS.Timeout
     if (countdown > 0) {
@@ -27,15 +27,13 @@ export default function LoginPage() {
     return () => clearInterval(interval)
   }, [countdown])
 
-  // Format phone number as user types
+
   const formatPhoneNumber = (value: string) => {
-    // Remove all non-digits
+    
     const digits = value.replace(/\D/g, "")
 
-    // Limit to 9 digits (after +998)
     const limitedDigits = digits.slice(0, 9)
 
-    // Format as (__) ___ __ __
     let formatted = limitedDigits
     if (limitedDigits.length >= 2) {
       formatted = `(${limitedDigits.slice(0, 2)}) ${limitedDigits.slice(2)}`
@@ -58,13 +56,12 @@ export default function LoginPage() {
 
     setIsLoading(true)
 
-  
     try {
      
       await new Promise((resolve) => setTimeout(resolve, 1000))
 
       setStep("verification")
-      setCountdown(60) // Start 60 second countdown
+      setCountdown(60) 
     } catch (error) {
       alert("SMS yuborishda xatolik yuz berdi")
     } finally {
@@ -130,7 +127,6 @@ export default function LoginPage() {
 
     setIsLoading(true)
     try {
-      // Resend SMS code
       await new Promise((resolve) => setTimeout(resolve, 1000))
       setCountdown(60)
     } catch (error) {
@@ -189,8 +185,6 @@ export default function LoginPage() {
                     maxLength={15}
                   />
                 </div>
-
-                {/* Cloudflare-style verification */}
               </div>
 
               <button
@@ -340,8 +334,6 @@ export default function LoginPage() {
           )}
         </div>
       </div>
-
-    
     </div>
   )
 }

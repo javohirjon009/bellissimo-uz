@@ -19,7 +19,7 @@ export default function Footer() {
         flexWrap: "wrap",
         gap: "40px"
       }}>
-        {/* Left Column - Logo & Phone */}
+       
         <div style={{ minWidth: "200px" }}>
           <Image
             src="/images/logo-footer-new.webp"
@@ -37,7 +37,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Middle Column - Links */}
         <div style={{
           display: "flex",
           gap: "60px"
@@ -74,14 +73,13 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Right Column - Social & Payments */}
         <div style={{
           display: "flex",
           flexDirection: "column",
           gap: "30px",
           minWidth: "200px"
         }}>
-          {/* Social Icons */}
+        
           <div>
             <div style={{
               fontSize: "14px",
@@ -100,7 +98,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Payment Methods */}
           <div style={{
             display: "flex",
             gap: "15px",
@@ -128,7 +125,6 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Copyright */}
       <div style={{
         borderTop: "1px solid #34495e",
         paddingTop: "20px",
@@ -142,7 +138,6 @@ export default function Footer() {
         © 2016–2025 Bellissimo Pizza.
       </div>
 
-      {/* Mobile Responsive */}
       <style jsx>{`
         @media (max-width: 768px) {
           footer > div {
@@ -159,7 +154,6 @@ export default function Footer() {
   )
 }
 
-// Style objects
 const linkStyle = {
   color: "#FFFFFF80",
   textDecoration: "none",
